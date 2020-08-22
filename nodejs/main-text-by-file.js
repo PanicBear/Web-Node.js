@@ -22,7 +22,7 @@ var app = http.createServer(function (request, response) {
     }
     response.writeHead(200);
 
-    fs.readFile(`${queryData.id+'.txt'}`, 'utf8', function (err, description) {
+    fs.readFile(`${'data/' + queryData.id + '.txt'}`, 'utf8', function (err, description) {
         var template = `
         <!doctype html>
         <html>

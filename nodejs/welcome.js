@@ -10,7 +10,7 @@ var app = http.createServer(function (request, response) {
     var title = 'Welcome';
 
     if (pathname === '/') {
-        fs.readFile(`${queryData.id + '.txt'}`, 'utf8', function (err, description) {
+        fs.readFile(`${'data/' + queryData.id + '.txt'}`, 'utf8', function (err, description) {
             if (queryData.id === undefined) {
                 title = 'Welcome';
                 description = 'Hello, Node.js';

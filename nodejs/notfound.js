@@ -15,7 +15,7 @@ var app = http.createServer(function (request, response) {
   // 루트 디렉토리나 쿼리스트링이 아닌 경우 404
   // http://localhost:3000/khkj
   if (pathname === '/') {
-    fs.readFile(`${queryData.id + '.txt'}`, 'utf8', function (err, description) {
+    fs.readFile(`${'data/' + queryData.id + '.txt'}`, 'utf8', function (err, description) {
       var template = `
         <!doctype html>
         <html>
