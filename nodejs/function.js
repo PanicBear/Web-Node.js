@@ -41,11 +41,11 @@ function templateHTML(title, list, body) {
     <!doctype html>
     <html>
     <head>
-      <title>WEB1 - ${title}</title>
+      <title>WEB2 - ${title}</title>
       <meta charset="utf-8">
     </head>
     <body>
-      <h1><a href="/">WEB</a></h1>
+      <h1><a href="/">WEB2</a></h1>
       ${list}
       ${body}
     </body>

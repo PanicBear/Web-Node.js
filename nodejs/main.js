@@ -10,9 +10,9 @@ var app = http.createServer(function (request, response) {
     console.log('queryData : ' + queryData.id);                 // queryData : ldsfioqhtgoehgopisf
 
     if (_url == '/') {
-        _url = '/index.html';
+        _url = 'index.html';
     }
-    if (_url == '/favicon.ico') {
+    if (_url == 'favicon.ico') {
         return response.writeHead(404);
     }
     response.writeHead(200);
