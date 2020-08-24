@@ -1,0 +1,23 @@
+<!-- 
+
+    form 태그
+
+        - 각각의 폼 안에 사용자가 입력한 정보를
+            submit 버튼 클릭시, 
+            action 속성이 가리키는 서버로 전송하는 html의 기능
+        
+        (get방식 시)
+        - http://localhost:3000/process_create?title=입력한내용1&description=입력한내용2
+ -->
+
+<form action="http://localhost:3000/process_create" method="post">
+    <p>
+        <input type="text" name="title">
+    </p>
+    <p>
+        <textarea name="description"></textarea>
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+</form>
