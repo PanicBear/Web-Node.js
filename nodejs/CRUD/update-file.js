@@ -97,7 +97,7 @@ var app = http.createServer(function (request, response) {
                             <input type="submit">
                         </p>
                     </form>`,
-                    `<a href="/create">create</a> <a href="/update?id=${queryData.id}">update</a>`);
+                    `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`);
                 response.writeHead(200);
                 response.end(template);
             });
@@ -105,35 +105,19 @@ var app = http.createServer(function (request, response) {
     } else if (pathname === '/update_process') {
         var body = '';
         request.on('data', function (data) {
-            body += data;
-
-            // Too much POST data, kill the connection!
-            // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
-            if (body.length > 1e6)
-                request.connection.destroy();
+            body = body + data;
         });
-
         request.on('end', function () {
             var post = qs.parse(body);
-            var id = pst.id;                        // 기존 create_process의 코드를 재활용, 단 구분 위한 id 추가
+            var id = post.id;
             var title = post.title;
             var description = post.description;
-
-            fs.rename(`data/${id}`, `data/${title}`, function(error){
-                response.writeHead(302, {Location: `/?id={title}`});
-                response.end();
-            })
-
-
-            console.log(post);
-            
-
-            /* fs.writeFile(`data/${title}.txt`, description, 'utf8', function (err) {
-                if (err) return console.log(err);
-
-                response.writeHead(302, { Location: `/?id=${title}.txt` });   // 헤더, 리다이렉션 주소
-                response.end(description);
-            }) */
+            fs.rename(`data/${id}.txt`, `data/${title}.txt`, function (error) {
+                fs.writeFile(`data/${title}.txt`, description, 'utf8', function (err) {
+                    response.writeHead(302, { Location: `/?id=${title}.txt` });
+                    response.end();
+                })
+            });
         });
     } else {
         response.writeHead(404);
