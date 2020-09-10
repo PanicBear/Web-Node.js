@@ -1,0 +1,17 @@
+npm init
+
+    해당 디렉토리를 npm이 관리하도록 함
+
+    이후 계속 엔터, y 엔터
+
+
+npm install
+
+                -g  전역 설치
+
+                -S  해당 프로그램에서 사용할 부품으로써 설치
+
+
+    npm install -S sanitize-html
+
+        XSS 방지 api(sanitize == 살균하다)
