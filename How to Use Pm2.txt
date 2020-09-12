@@ -37,3 +37,28 @@
         pm2 log
         
         - 프로젝트 실시간 업데이트 시 프로젝트 변경여부 확인 위해 필요
+
+
+
+추가 내용
+
+    1. pm2 start 파일경로 --watch --no-daemon
+
+        pm2 실행과 동시에 log까지 보도록하는 기능
+    
+
+    2. pm2 kill
+
+        pm2 stop all과 동일
+
+        1번과 같이 실행할 경우 list를 보면 프로세스가 살아있는 경우가 있어서.
+
+
+    3. pm2 start 파일경로 --watch --ignore-watch="파일경로" --no-daemon
+
+        pm2 start main.js --watch --ignore-watch="date/* session/*" --no-daemon
+
+        다중 경로 가능
+
+            파일 생성 기능 등을 사용할 때, pm2가 파일 수정을 감지하고 임의적으로 재시작 되는 것을 방지
+            (재시작 조건 무시 경로 설정하기)
